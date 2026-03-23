@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomball Student-Dining Initiative</title>
+    <style>
+        /* LSC Spirit Colors */
+        :root {
+            --lsc-blue: #003366;
+            --lsc-gold: #FFD700;
+            --light-gray: #f4f4f4;
+            --dark-text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--dark-text);
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(rgba(0,51,102,0.9), rgba(0,51,102,0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background-color: var(--lsc-gold);
+            color: var(--lsc-blue);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e6c200;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Featured Partner Section */
+        .partner-section {
+            background-color: white;
+            border-left: 5px solid var(--lsc-gold);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            background-color: var(--lsc-blue);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        .offer-box {
+            border: 2px dashed var(--lsc-blue);
+            background-color: #eef4fa;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1rem;
+            border-radius: 8px;
+        }
+
+        .offer-box h3 {
+            color: var(--lsc-blue);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        /* Contact Details Styling */
+        .contact-details {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        .contact-details a {
+            color: var(--lsc-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--lsc-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--lsc-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Tomball Student-Dining Initiative</h1>
+        <p class="subtitle">Connecting Campus & Community. Fueling Your Future.</p>
+        <a href="#partner" class="cta-button">Find Student Discounts</a>
+    </header>
+
+    <div class="container">
+        
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2>Don't Just Eat. Support Local.</h2>
+            <p>A student-led leadership project connecting LSC-Tomball students with the best local dining options.</p>
+        </div>
+
+        <div id="partner" class="partner-section">
+            <span class="badge">Official Launch Partner</span>
+            <h2 style="margin-top: 10px;">Margaritas and Fajitas</h2>
+            <p>Experience authentic Tex-Mex cuisine right near campus. Perfect for lunch between classes or a dinner celebration.</p>
+            
+            <div class="offer-box">
+                <p>Show your LSC-Tomball ID to receive:</p>
+                <h3>5% OFF</h3>
+                <p><strong>Food & Non-Alcoholic Beverages</strong></p>
+                <small>*Valid for Dine-in & Take-out. Cannot be combined with other offers.</small>
+            </div>
+
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <a href="https://margaritasandfajitas.com/?utm_source=google" target="_blank" style="color: var(--lsc-blue); font-weight: bold;">🌐 Visit their Website for Menu & Directions</a>
+            </div>
+        </div>
+
+        <div class="about-grid">
+            <div class="info-card">
+                <h3>🐺 For Students</h3>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li>✅ <strong>Save Money:</strong> Exclusive discounts just for being a student.</li>
+                    <li>✅ <strong>Discover Quality:</strong> Curated list of high-quality local restaurants.</li>
+                    <li>✅ <strong>Community:</strong> Support the businesses that support us.</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3>🤝 For Business Owners</h3>
+                <p>Want to attract the 10,000+ students and staff at LSC-Tomball? Join the initiative.</p>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li>🔹 Zero Cost to Join</li>
+                    <li>🔹 Direct access to the campus community</li>
+                    <li>🔹 Free marketing on our student networks</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid #ccc; margin: 1.5rem 0;">
+                
+                <h4>Contact the Project Lead:</h4>
+                <p><strong>Dongfang Wang</strong><br>Timberwolf Leader</p>
+                
+                <div class="contact-details">
+                    <p>📍 <strong>Base:</strong> 30555 Tomball Pkwy, Tomball, TX 77375</p>
+                    <p>📞 <strong>Phone:</strong> <a href="tel:2814751166">281-475-1166</a></p>
+                    <p>✉️ <strong>Email:</strong> <a href="mailto:oranipost@outlook.com">oranipost@outlook.com</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p><strong>The Tomball Student-Dining Initiative</strong></p>
+        <p style="font-size: 0.9rem;">A Personal Leadership Project by Dongfang Wang.</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">*This initiative is a student-led project and is not an official contract with Lone Star College.*</p>
+    </footer>
+
+</body>
+</html>
