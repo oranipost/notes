@@ -113,7 +113,13 @@
 *   How to calculate the pH, the pH is the Hydrogen ion concentration 
     
     pH = -log10(H+)
-    
+
+### Cells
+
+*   Transport Proteins
+*   Recognition proteins
+*   Adhesion proteins
+*   Receeptor proteins
 
 
 

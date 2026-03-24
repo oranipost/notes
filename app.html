@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Restaurant Finder</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        
+        #app-container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: none; }
+        h1 { text-align: center; color: #2c3e50; font-size: 24px; }
+        
+        /* Updated Category Scroll */
+        .categories-container { display: flex; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; white-space: nowrap; gap: 10px; }
+        .categories-container::-webkit-scrollbar { height: 8px; }
+        .categories-container::-webkit-scrollbar-thumb { background: #bdc3c7; border-radius: 4px; }
+        .category-btn { flex: 0 0 auto; padding: 10px 15px; border: none; border-radius: 20px; background-color: #3498db; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .category-btn:hover { background-color: #2980b9; }
+        
+        .restaurant-card { border: 1px solid #eee; border-radius: 8px; padding: 15px; margin-bottom: 15px; background: #fafafa; }
+        .restaurant-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 10px; }
+        .restaurant-title-box { flex: 1; }
+        .restaurant-name { font-size: 18px; font-weight: bold; margin: 0; }
+        .restaurant-address { font-size: 12px; color: #7f8c8d; margin-top: 4px; }
+        .vfm-badge { background-color: #e74c3c; color: white; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-left: 10px; height: fit-content; }
+        
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 14px; color: #555; }
+        .highlight { color: #27ae60; font-weight: bold; }
+
+        #location-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .modal-btn { background-color: #2ecc71; color: white; border: none; padding: 12px 20px; width: 100%; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+        .zip-input { width: calc(100% - 24px); padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div id="location-modal">
+    <div class="modal-content">
+        <h2 style="margin-top:0;">📍 Location Required</h2>
+        <p>Enter your location to fetch live Yelp data.</p>
+        <input type="text" id="zip-code" class="zip-input" placeholder="e.g., 77375">
+        <button class="modal-btn" onclick="submitZipCode()">Search Real Data</button>
+    </div>
+</div>
+
+<div id="app-container">
+    <h1>🍽️ Live Value Finder</h1>
+    <p id="user-location-display" style="text-align: center; color: #7f8c8d; margin-top: -10px; margin-bottom: 20px; font-size: 14px;"></p>
+    
+    <div class="categories-container">
+        <button class="category-btn" onclick="fetchYelpData('chinese')">🥢 Chinese</button>
+        <button class="category-btn" onclick="fetchYelpData('japanese')">🍣 Japanese</button>
+        <button class="category-btn" onclick="fetchYelpData('korean')">🥘 Korean</button>
+        <button class="category-btn" onclick="fetchYelpData('hotdogs')">🍔 Fast Food</button>
+        <button class="category-btn" onclick="fetchYelpData('salad')">🥗 Salad</button>
+        <button class="category-btn" onclick="fetchYelpData('bubbletea')">🧋 Boba Tea</button>
+        <button class="category-btn" onclick="fetchYelpData('desserts')">🍰 Desserts</button>
+    </div>
+
+    <div id="restaurant-list">
+        <p style="text-align: center; color: #7f8c8d;">Select a category to fetch from Yelp...</p>
+    </div>
+</div>
+
+<script>
+    let userLocation = "";
+
+    function submitZipCode() {
+        const zip = document.getElementById('zip-code').value;
+        if (zip.length >= 5) {
+            userLocation = zip;
+            document.getElementById('location-modal').style.display = 'none';
+            document.getElementById('app-container').style.display = 'block';
+            document.getElementById('user-location-display').innerText = "📍 Active Location: " + zip;
+        } else {
+            alert("Please enter a valid Zip Code.");
+        }
+    }
+
+    // --- REAL YELP API LOGIC (Commented out for future use) ---
+    /*
+    async function realYelpFetch(categoryAlias, location) {
+        const apiKey = 'YOUR_YELP_API_KEY_HERE'; // 你未来申请的密码
+        const url = `https://api.yelp.com/v3/businesses/search?location=${location}&categories=${categoryAlias}&sort_by=rating&limit=10`;
+        
+        // 注意：前端直接 fetch 会遇到 CORS 报错，必须通过你的后端服务器转发
+        const response = await fetch(url, {
+            headers: { Authorization: `Bearer ${apiKey}` }
+        });
+        const data = await response.json();
+        return data.businesses;
+    }
+    */
+
+    // --- SIMULATED YELP API RESPONSE (To keep the prototype working today) ---
+    function fetchYelpData(categoryAlias) {
+        const listContainer = document.getElementById("restaurant-list");
+        listContainer.innerHTML = "<p style='text-align: center;'>📡 Contacting Yelp Servers...</p>";
+
+        setTimeout(() => {
+            // 这里模拟的是 Yelp 真实返回的数据格式 (JSON结构)
+            const yelpResponseMock = [
+                {
+                    name: categoryAlias === 'chinese' ? "Imperial Peking Duck" : "Sample Restaurant A",
+                    rating: 4.5,
+                    price: "$$",
+                    review_count: 342,
+                    location: { display_address: ["123 Main St", "Tomball, TX 77375"] },
+                    distance: 3500, // Yelp returns distance in meters
+                    categories: categoryAlias
+                },
+                {
+                    name: categoryAlias === 'bubbletea' ? "Kung Fu Tea" : "Sample Restaurant B",
+                    rating: 4.0,
+                    price: "$",
+                    review_count: 85,
+                    location: { display_address: ["456 Boba Blvd", "Magnolia, TX 77354"] },
+                    distance: 1200, 
+                    categories: categoryAlias
+                }
+            ];
+
+            renderRestaurants(yelpResponseMock);
+        }, 800);
+    }
+
+    function renderRestaurants(businesses) {
+        const listContainer = document.getElementById("restaurant-list");
+        listContainer.innerHTML = "";
+
+        businesses.forEach((biz, index) => {
+            // Yelp distance is in meters, converting to miles
+            const distanceMiles = (biz.distance / 1609.34).toFixed(1); 
+            // Mocking a travel time (3 mins per mile)
+            const travelTime = Math.round(distanceMiles * 3); 
+            // Mocking VFM calculation
+            const vfmScore = (biz.rating / (biz.price.length * 0.5 + travelTime * 0.1)).toFixed(1);
+
+            const addressString = biz.location.display_address.join(", "); // Joining Yelp's address array
+
+            const card = `
+                <div class="restaurant-card">
+                    <div class="restaurant-header">
+                        <div class="restaurant-title-box">
+                            <h3 class="restaurant-name">#${index + 1} ${biz.name}</h3>
+                            <div class="restaurant-address">📍 ${addressString}</div>
+                        </div>
+                        <span class="vfm-badge">VFM: ${vfmScore}</span>
+                    </div>
+                    <div class="info-grid">
+                        <span>⭐ Yelp Rating: ${biz.rating} (${biz.review_count} reviews)</span>
+                        <span>💰 Price: ${biz.price}</span>
+                        <span>🚗 Distance: ${distanceMiles} mi</span>
+                        <span class="highlight">⏱️ Travel Time: ~${travelTime} min</span>
+                    </div>
+                </div>
+            `;
+            listContainer.innerHTML += card;
+        });
+    }
+</script>
+</body>
+</html>
