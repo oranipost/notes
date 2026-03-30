@@ -663,3 +663,80 @@
         4. Merged currency: Eliminating exchange rate risk by sharing a currency (e.
         g., the euro or dollarization), which requires giving up independent monetary 
         policy.
+
+##  Chapter 30: Government Budgets and Fiscal Policy
+
+### Budgets and Policy
+
+*   Government Spending
+
+    1.  when the federal government spends more money than it receives in taxes, it
+        runs a budget deficit
+    2.  when the federal government receivess more money in taxes than it spends,
+        it runs a budget surplus.
+    3.  if it is the same, then, it has a balanced budget
+
+*   State and Local Government Spending
+
+    1.  Taxes are paid by most, but not all, people who work
+
+*   Taxation
+
+    1.  regressive tax
+    2.  proportional tax
+    3.  progressive tax
+
+    *   individual income tax is the largest singel source of federal government 
+        revenue
+    *   payroll tax provides funds for social security and medicare
+    *   the income tax is a progressive tax
+    *   the marginal tax rates for a single taxpayer range from 10% to 35%
+    *   Medicare payroll tax is a proportional tax, 
+    *   Social security payroll tax is proportional tax and above that a certain level 
+        it becomes a regressive tax, meaning that people with higher incomes pay a 
+        smaller share of their income in tax
+    *   excise tax is a tax a particular good
+    *   estate and gift tax on people who pass large amounts of assets to the next 
+        generation
+    
+*   Federal Deficits and the national debt
+
+    *   Debt/GDP Ratio
+
+        1.  National debt refers to the total amount that the government has
+            borrowed over time
+
+*   Usine Fiscal Policy to Fight Recession, Unemployment, and Inflation
+
+    1.  Expansionary Fiscial policy and inward in the case of contractioinary   
+        fiscal policy
+
+
+## Chapter 33: International Trade
+
+*   A country has an absolute advantage if it uses fewer resources (like labor hours) 
+    to produce a good compared to another country.
+
+*   A country has a comparative advantage when it can produce a good at a lower cost 
+    in terms of other goods (lower opportunity cost).
+
+*   Opportunity Cost is what a country gives up to produce a specific good.
+
+*   Gain from trade is when countries specialize in what they do best and trade, they 
+    can consume more than they could produce alone. It is a mutually beneficial 
+    exchange.
+*   Geography is Destiny (like Saudi Arabia)
+
+*   Global Links (Like How Apple make it phone)
+
+*   opportunity cost = GiveUp/Get
+
+*   Tariffs are taxes that governments place on imported goods.
+
+*   Low income countries can gain more benefits from global trade
+
+*   Global Trade also can exchange not only money but also knowledge and skills
+
+*   WTO use the negotiation mechanism to decrease the barrier by using the term 
+    "rounds"
+
